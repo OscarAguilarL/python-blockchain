@@ -55,7 +55,7 @@ def add_transaction(_recipient, sender=owner, _amount=1.0):
         'recipient': _recipient,
         'amount': _amount,
     }
-    if not verify_transaction(transaction):
+    if verify_transaction(transaction):
         open_transactions.append(transaction)
         participants.add(sender)
         participants.add(recipient)
@@ -165,7 +165,7 @@ while waiting_for_input:
         print_blockchain_elements()
         print('Invalid blockchain')
         break
-    print(get_balance('Oscar'))
+    print('Balance of {}: {:6.2f}'.format(owner, get_balance('Oscar')))
 else:
     print('User left')
 
